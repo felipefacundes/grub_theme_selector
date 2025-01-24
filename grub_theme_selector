@@ -2,15 +2,23 @@
 # License: GPLv3
 # Credits: Felipe Facundes
 
-# This Bash script aims to manage GRUB themes in an automated and interactive way. 
-# It searches for 'theme.txt' files in predefined directories such as 
-# '/usr/share/grub/themes' and '/boot/grub/themes', 
-# using the recursive directory expansion enabled by 'shopt -s globstar'. 
-# After identifying the available themes, it presents a friendly selection interface via Whiptail, 
-# allowing the user to choose a theme. The script safely updates the '/etc/default/grub' file, 
-# setting the new 'GRUB_THEME' variable and regenerating the GRUB configuration file with 'grub-mkconfig'. 
-# It includes robust checks to ensure the integrity of operations 
-# and requires administrative authentication to apply changes to the system.
+: <<'DOCUMENTATION'
+This Bash script aims to manage GRUB themes in an automated and interactive way. 
+It searches for 'theme.txt' files in predefined directories such as 
+'/usr/share/grub/themes' and '/boot/grub/themes', 
+using the recursive directory expansion enabled by 'shopt -s globstar'. 
+After identifying the available themes, it presents a friendly selection interface via Whiptail, 
+allowing the user to choose a theme. The script safely updates the '/etc/default/grub' file, 
+setting the new 'GRUB_THEME' variable and regenerating the GRUB configuration file with 'grub-mkconfig'. 
+It includes robust checks to ensure the integrity of operations 
+and requires administrative authentication to apply changes to the system.
+
+## Features
+- Automatically detects available GRUB themes in common directories.
+- Presents an interactive menu using Whiptail.
+- Updates the GRUB configuration securely.
+- Requires administrative privileges to apply changes.
+DOCUMENTATION
 
 # Enable recursive directory expansion
 shopt -s globstar
